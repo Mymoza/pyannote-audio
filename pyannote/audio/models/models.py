@@ -133,7 +133,7 @@ class RNN(nn.Module):
         intermediate : `torch.Tensor`
             (num_layers, batch_size, hidden_size * num_directions)
         """
-
+        print("TEEEEEEEEST")
         if return_intermediate:
             num_directions = 2 if self.bidirectional else 1
 
@@ -161,7 +161,7 @@ class RNN(nn.Module):
 
         else:
             output, hidden = self.rnn_(features)
-
+            print("TESSSSSSSSSSSSSSSS alllllloooooooo")
             if return_intermediate:
                 if self.unit == 'LSTM':
                     h = hidden[0]
