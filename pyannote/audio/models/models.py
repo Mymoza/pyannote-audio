@@ -478,9 +478,10 @@ class PyanNet(nn.Module):
 
         output = self.linear_(output)
         output = self.activation_(output)
-        print("return_intermediate ", return_intermediate)
-        print("allllllo intermedite ", intermediate)
-        print("saluuuuut output ", output)
+        print("return_intermediate ", return_intermediate.shape)
+        print("allllllo intermedite ", intermediate.shape)
+        print("saluuuuut output ", output.shape)
+        print("output SIZEEEEEEE ", output.size())
         if return_intermediate is None:
             return output
         return output, intermediate
