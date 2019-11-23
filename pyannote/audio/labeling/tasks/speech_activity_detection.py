@@ -209,7 +209,7 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
         domain_classifier_rnn = RNN(
             n_features=model.intermediate_dimension(self.attachment), 
             **self.rnn)
-
+        print("PRINT domain_classifier_rnn.dimension : ", domain_classifier_rnn.dimension)
         domain_classifier_linear = nn.Linear(
             domain_classifier_rnn.dimension,
             len(specifications[self.domain]['classes']),
@@ -293,8 +293,7 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
             batch[self.domain],
             dtype=torch.int64,
             device=self.device_)
-        meh = self.domain_classifier_(intermediate)
-        print("MEH SHAPEEEEEE : ", meh.shape)
+        print("intermediate SHAPEEEEEE : ", intermediate.shape)
         domain_scores = self.activation_(self.domain_classifier_(intermediate))
 
         domain_loss = self.domain_loss_(domain_scores, domain_target)
