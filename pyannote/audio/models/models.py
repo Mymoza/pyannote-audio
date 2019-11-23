@@ -162,7 +162,7 @@ class RNN(nn.Module):
         else:
             output, hidden = self.rnn_(features)
             print("output : ", output.size())
-            print("hidden : ", hidden.size())
+            #print("hidden : ", hidden.size())
             if return_intermediate:
                 if self.unit == 'LSTM':
                     h = hidden[0]
