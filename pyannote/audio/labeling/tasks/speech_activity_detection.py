@@ -358,6 +358,7 @@ class DomainAdversarialSpeechActivityDetection(DomainAwareSpeechActivityDetectio
             dtype=torch.int64,
             device=self.device_)
         print("intermediate SHAPEEEEEE 1 : ", intermediate.shape)
+        print("shapee !!! self.gradient_reversal_(intermediate)) ", self.gradient_reversal_(intermediate).shape)
         domain_scores = self.activation_(self.domain_classifier_(
             self.gradient_reversal_(intermediate)))
         print("domain_scores.shape ", domain_scores.shape)
