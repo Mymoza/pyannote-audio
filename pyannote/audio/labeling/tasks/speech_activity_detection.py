@@ -293,10 +293,10 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
             batch[self.domain],
             dtype=torch.int64,
             device=self.device_)
-
-        domain_scores = self.activation_(self.domain_classifier_(intermediate))
         meh = self.domain_classifier_(intermediate)
-        print(meh.shape)
+        print("MEH SHAPEEEEEE : ", meh.shape)
+        domain_scores = self.activation_(self.domain_classifier_(intermediate))
+
         domain_loss = self.domain_loss_(domain_scores, domain_target)
 
         return {'loss': loss + domain_loss,
