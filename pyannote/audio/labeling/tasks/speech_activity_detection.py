@@ -275,7 +275,7 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
                          dtype=torch.float32,
                          device=self.device_)
         fX, intermediate = self.model_(X, return_intermediate=self.attachment)
-
+        print("----------INTERMEDIATE : ", intermediate.size())
         # speech activity detection
         fX = fX.view((-1, self.n_classes_))
         target = torch.tensor(
@@ -295,7 +295,8 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
             device=self.device_)
 
         domain_scores = self.activation_(self.domain_classifier_(intermediate))
-
+        meh = self.domain_classifier_(intermediate)
+        print(meh.shape)
         domain_loss = self.domain_loss_(domain_scores, domain_target)
 
         return {'loss': loss + domain_loss,
