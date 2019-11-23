@@ -319,7 +319,7 @@ class DomainAdversarialSpeechActivityDetection(DomainAwareSpeechActivityDetectio
             batch[self.domain],
             dtype=torch.int64,
             device=self.device_)
-
+        print("intermediate SHAPEEEEEE : ", intermediate.shape)
         domain_scores = self.logsoftmax_(self.domain_classifier_(
             self.gradient_reversal_(intermediate)))
         domain_loss = self.domain_loss_(domain_scores, domain_target)

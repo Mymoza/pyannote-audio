@@ -488,6 +488,7 @@ class PyanNet(nn.Module):
         raise NotImplementedError(msg)
 
     def intermediate_dimension(self, layer):
+        print("LAYYYYYYYER : ", layer)
         return self.rnn_.intermediate_dimension(layer)
 
     @property
