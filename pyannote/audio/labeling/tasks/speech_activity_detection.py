@@ -298,7 +298,10 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
         intermediate = torch.unsqueeze(intermediate,0)
         print("intermediate SHAPEEEEEE 2 : ", intermediate.shape)
         domain_scores = self.activation_(self.domain_classifier_(intermediate))
-
+        print("domain_scores.shape ", domain_scores.shape)
+        print("domain_target.shapeeeee 1 ", domain_target.shape)
+        domain_target = torch.unsqueeze(domain_target,0)
+        print("domain_target.shapeeeeeee 2 ", domain_target.shape)
         domain_loss = self.domain_loss_(domain_scores, domain_target)
 
         return {'loss': loss + domain_loss,
