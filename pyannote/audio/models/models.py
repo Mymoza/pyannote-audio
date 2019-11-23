@@ -460,15 +460,17 @@ class PyanNet(nn.Module):
             output = self.rnn_(output)
         else:
             if return_intermediate == 0:
+                print("return_intermediate ====== 0")
                 intermediate = output
                 output = self.rnn_(output)
             else:
+                print("JE SUIS PASSÉ À -=1")
                 return_intermediate -= 1
                 # get RNN final AND intermediate outputs
                 output, intermediate = self.rnn_(output, return_intermediate=True)
                 # only keep hidden state of requested layer
                 intermediate = intermediate[return_intermediate]
-
+        
         output = self.ff_(output)
 
         if self.task_ == TASK_REPRESENTATION_LEARNING:
@@ -476,7 +478,9 @@ class PyanNet(nn.Module):
 
         output = self.linear_(output)
         output = self.activation_(output)
-
+        print("return_intermediate ", return_intermediate)
+        print("allllllo intermedite ", intermediate)
+        print("saluuuuut output ", output)
         if return_intermediate is None:
             return output
         return output, intermediate
