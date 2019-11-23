@@ -493,7 +493,9 @@ class PyanNet(nn.Module):
 
     def intermediate_dimension(self, layer):
         if layer == 0:
+            print("LAYERRRRRRR ou : ", layer)
             return self.sincnet_.dimension
+        print("LAYERRRRRRR : ", layer)
         return self.rnn_.intermediate_dimension(layer-1)
 
     @property
