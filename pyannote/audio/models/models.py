@@ -161,7 +161,8 @@ class RNN(nn.Module):
 
         else:
             output, hidden = self.rnn_(features)
-            print("TESSSSSSSSSSSSSSSS alllllloooooooo")
+            print("output : ", output)
+            print("hidden : ", hidden)
             if return_intermediate:
                 if self.unit == 'LSTM':
                     h = hidden[0]

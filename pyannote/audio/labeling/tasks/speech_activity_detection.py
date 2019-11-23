@@ -264,7 +264,7 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
             batch[self.domain],
             dtype=torch.int64,
             device=self.device_)
-
+        print("----------INTERMEDIATE : ", intermediate)
         domain_scores = self.logsoftmax_(self.domain_classifier_(intermediate))
         domain_loss = self.domain_loss_(domain_scores, domain_target)
 
