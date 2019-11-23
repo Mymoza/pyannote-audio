@@ -300,7 +300,7 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
         domain_scores = self.activation_(self.domain_classifier_(intermediate))
         print("domain_scores.shape ", domain_scores.shape)
         print("domain_target.shapeeeee 1 ", domain_target.shape)
-        domain_target = torch.unsqueeze(domain_target,0)
+        #domain_target = torch.unsqueeze(domain_target,0)
         print("domain_target.shapeeeeeee 2 ", domain_target.shape)
         domain_loss = self.domain_loss_(domain_scores, domain_target)
 
@@ -357,9 +357,12 @@ class DomainAdversarialSpeechActivityDetection(DomainAwareSpeechActivityDetectio
             batch[self.domain],
             dtype=torch.int64,
             device=self.device_)
-
+        print("intermediate SHAPEEEEEE 1 : ", intermediate.shape)
         domain_scores = self.activation_(self.domain_classifier_(
             self.gradient_reversal_(intermediate)))
+        print("domain_scores.shape ", domain_scores.shape)
+        print("domain_target.shapeeeee 1 ", domain_target.shape)
+        print("NB DOMAINS : ", domain_scores.shape[1])
 
         if self.domain_loss == "MSELoss":
             # One hot encode domain_target for Mean Squared Error Loss
