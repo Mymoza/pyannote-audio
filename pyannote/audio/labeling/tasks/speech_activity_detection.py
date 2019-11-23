@@ -209,6 +209,7 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
         domain_classifier_rnn = RNN(
             n_features=model.intermediate_dimension(self.attachment), 
             **self.rnn)
+        print("PROINT N_FEATURESSSSSSS : ", domain_classifier_rnn.n_features)
         print("PRINT domain_classifier_rnn.dimension : ", domain_classifier_rnn.dimension)
         domain_classifier_linear = nn.Linear(
             domain_classifier_rnn.dimension,
