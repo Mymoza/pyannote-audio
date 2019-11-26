@@ -175,7 +175,9 @@ class DomainAwareSpeechActivityDetection(SpeechActivityDetection):
 
         if rnn is None:
             rnn = dict()
+            rnn.update({'pool' : 'sum'})
         self.rnn = rnn
+        print("HERE IS THE RNN : ", self.rnn)
 
         self.domain_loss = domain_loss
         if self.domain_loss == "NLLLoss":
